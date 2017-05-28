@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {}
+	</style>
+</head>
+<body>
+	<button id="first">first</button>
+	<button id="second">second</button>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis provident a beatae ad non at rerum, deserunt atque laboriosam quidem, sunt, aliquam nisi odit repellendus animi earum consequuntur maxime. Delectus.</p>
+	<script>
+		Array.from(document.querySelectorAll('button'))
+			.forEach((btn,i) => {btn.addEventListener('click', e => {
+			history.pushState({state: e.target.id}, "page " + i, "/" + e.target.id);
+		})});
+
+		window.onpopstate = function(event) {
+		  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+		};
+	</script>
+</body>
+</html>
